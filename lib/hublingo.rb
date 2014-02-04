@@ -18,7 +18,7 @@ class Hublingo
   end
 
   def languages
-  	1.upto(5) do |i|
+  	repos.each do |repo|
   		puts repos[i].full_name
   	end
   end
