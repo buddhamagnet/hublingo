@@ -19,7 +19,8 @@ class Hublingo
 
   def languages
   	repos.each do |repo|
-  		puts repos[i].full_name
+  		puts repo.full_name
+  		puts Octokit.languages(repo.full_name)
   	end
   end
 end
