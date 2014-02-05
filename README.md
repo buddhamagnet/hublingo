@@ -16,4 +16,4 @@ NOTES:
 
 This whole project, the gem and application, was completed in 3 1/2 hours.
 
-I published it as a gem for giggles only. Hence no tests!
+I published it as a gem for giggles only.
