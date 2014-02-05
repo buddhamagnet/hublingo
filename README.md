@@ -17,3 +17,5 @@ NOTES:
 This whole project, the gem and application, was completed in 3 1/2 hours.
 
 I published it as a gem for giggles only.
+
+[![Gem Version](https://badge.fury.io/rb/hublingo.png)](http://badge.fury.io/rb/hublingo)
