@@ -2,11 +2,11 @@ require 'octokit'
 
 class Hublingo
 
-	attr_accessor :repos
+  attr_accessor :repos
   attr_accessor :frequencies
 
   def initialize
-  	@repos = []
+    @repos = []
     @frequencies = Hash.new(0)
   end
 
@@ -15,12 +15,12 @@ class Hublingo
   end
 
   def lingo(hacker)
-  	@repos = Octokit.repos(hacker)
-  	languages || "Sorry that hacker has no repos!"
+    @repos = Octokit.repos(hacker)
+    languages || "Sorry that hacker has no public repos!"
   rescue Octokit::NotFound
-  	"That hacker doesn't exist baby."
+    "That hacker doesn't exist baby."
   rescue Octokit::TooManyRequests
-  	"You're too greedy, wait for a while."
+    "Uh oh! Rate limit! Please try again at #{Octokit.rate_limit.resets_at}"
   end
 
   def languages
