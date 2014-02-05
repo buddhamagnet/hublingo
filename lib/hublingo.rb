@@ -40,9 +40,12 @@ class Hublingo
           frequencies[field] += 1
         end
       end
-      frequencies.sort_by {|k, v| - v}.first.first.to_s
-      return frequencies
+      return pick
     end
     false
+  end
+
+  def pick
+    frequencies.sort_by {|k, v| - v}.first.first.to_s
   end
 end
