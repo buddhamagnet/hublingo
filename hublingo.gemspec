@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name                  = 'hublingo'
-  s.version               = '0.0.5'
+  s.version               = '0.0.8'
   s.rubygems_version      = '2.1.11'
   s.required_ruby_version = '>= 1.9.3'
   s.platform              = Gem::Platform::RUBY

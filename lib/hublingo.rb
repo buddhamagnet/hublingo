@@ -5,6 +5,7 @@ class Hublingo
 
   attr_accessor :repos
   attr_accessor :frequencies
+  attr_accessor :client
 
   # Constructor initializes repos array and frequencies hash.
   def initialize
@@ -23,7 +24,8 @@ class Hublingo
   # @param hacker [String] the Github username
   # @return [String] error response or favourite language.
   def lingo(hacker)
-    @repos = Octokit.repos(hacker)
+    @client = Octokit::Client.new(client_id: ENV['GITHUB_CLIENT_ID'], client_secret: ENV['GITHUB_CLIENT_SECRET'])
+    @repos = client.repositories(hacker)
     languages || "Sorry that hacker has no public repos!"
   rescue Octokit::NotFound
     "That hacker doesn't exist baby."
@@ -36,7 +38,7 @@ class Hublingo
   def languages
     if repos.any?
       repos.each do |repo|
-        Octokit.languages(repo.full_name).fields.each do |field|
+        client.languages(repo.full_name).fields.each do |field|
           frequencies[field] += 1
         end
       end
