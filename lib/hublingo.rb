@@ -1,8 +1,8 @@
 require 'octokit'
 
-class HublingoNotFound < StandardError
-class HublingoRateLimit < StandardError
-class HublingoNoPublic < StandardError
+class HublingoNotFound < StandardError; end
+class HublingoRateLimit < StandardError; end
+class HublingoNoPublic < StandardError; end
 
 # @author Dave Goodchild
 class Hublingo
