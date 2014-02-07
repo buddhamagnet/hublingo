@@ -2,6 +2,7 @@ require 'octokit'
 
 class HublingoNotFound < StandardError
 class HublingoRateLimit < StandardError
+class HublingoNoPublic < StandardError
 
 # @author Dave Goodchild
 class Hublingo
@@ -27,7 +28,7 @@ class Hublingo
   # @return [String] error response or favourite language.
   def lingo(hacker)
     @repos = Octokit.repos(hacker)
-    languages || "Sorry that hacker has no public repos!"
+    languages || raise HublingoNoPublic
   rescue Octokit::NotFound
     raise HublingoNotFound
   rescue Octokit::TooManyRequests
