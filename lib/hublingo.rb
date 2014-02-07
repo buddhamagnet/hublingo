@@ -30,7 +30,7 @@ class Hublingo
   def lingo(hacker)
     @client = Octokit::Client.new(client_id: ENV['GITHUB_CLIENT_ID'], client_secret: ENV['GITHUB_CLIENT_SECRET'])
     @repos = client.repositories(hacker)
-    languages || raise HublingoNoPublic
+    languages
   rescue Octokit::NotFound
     raise HublingoNotFound
   rescue Octokit::TooManyRequests
@@ -47,6 +47,8 @@ class Hublingo
         end
       end
       return pick
+    else
+      raise HublingoNoPublic
     end
     false
   end
