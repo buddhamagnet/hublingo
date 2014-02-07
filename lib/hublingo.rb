@@ -1,5 +1,9 @@
 require 'octokit'
 
+class HublingoNotFound < StandardError
+class HublingoRateLimit < StandardError
+class HublingoNoPublic < StandardError
+
 # @author Dave Goodchild
 class Hublingo
 
@@ -26,11 +30,11 @@ class Hublingo
   def lingo(hacker)
     @client = Octokit::Client.new(client_id: ENV['GITHUB_CLIENT_ID'], client_secret: ENV['GITHUB_CLIENT_SECRET'])
     @repos = client.repositories(hacker)
-    languages || "Sorry that hacker has no public repos!"
+    languages || raise HublingoNoPublic
   rescue Octokit::NotFound
-    "That hacker doesn't exist baby."
+    raise HublingoNotFound
   rescue Octokit::TooManyRequests
-    "Uh oh! Rate limit! Please try again at #{Octokit.rate_limit.resets_at}"
+    raise HublingoRateLimit rate_limit.resets_at
   end
 
   # Cycles through the repos and builds a hash of language frequencies.
