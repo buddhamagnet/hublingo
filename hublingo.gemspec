@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name                  = 'hublingo'
-  s.version               = '0.1.2'
+  s.version               = '0.1.4'
   s.rubygems_version      = '2.1.11'
   s.required_ruby_version = '>= 1.9.3'
   s.platform              = Gem::Platform::RUBY
@@ -14,5 +14,6 @@ Gem::Specification.new do |s|
   s.license               = 'MIT'
   s.post_install_message  = 'We hope you enjoy hublingo'
   s.add_development_dependency 'minitest', '~> 4.7.3'
+  s.add_development_dependency 'pry'
   s.add_runtime_dependency 'octokit', ['=2.7.1']
 end
